@@ -8,12 +8,6 @@ export const Container = styled.div`
 `;
 export const LeftSide = styled.div`
   margin-left: 25px;
-  a {
-    text-decoration: none;
-    margin: 0px 10px;
-    color: #3b3b3b;
-    font-weight: 700;
-  }
 `;
 export const RightSide = styled.button.attrs({
   type: "button",

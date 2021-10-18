@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
+export const ContaineArea = styled.div``;
 export const TilArea = styled.div`
   overflow: hidden;
   display: flex;
+
   .homeImages {
     display: flex;
     flex-direction: column;
+    padding: ${(props) => (props.borda ? "0px 7px" : "0px")};
     img {
-      height: calc(100vh - 70px);
+      height: 43vw;
       width: 100%;
       object-fit: cover;
     }

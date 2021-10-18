@@ -1,8 +1,9 @@
 import React from "react";
-import { Col, Row, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { HomeArea } from "./style.js";
 import TiltImage from "../../components/TiltImage/index.js";
 import Catalog from "../../components/Catalog/index.js";
+import About from "../../components/About/index.js";
 export default function Home() {
   return (
     <>
@@ -11,6 +12,7 @@ export default function Home() {
         <Container>
           <Catalog />
         </Container>
+        <About />
       </HomeArea>
     </>
   );

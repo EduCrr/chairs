@@ -14,3 +14,25 @@ body {
 h1 {
   font-weight: 700 !important;
 }
+
+a {
+  text-decoration: none !important;
+  margin: 0px 10px;
+  color: #3b3b3b !important;
+  font-weight: 700;
+}
+html ::-webkit-scrollbar {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  width: 0.6vw;
+}
+
+html ::-webkit-scrollbar-thumb {
+  background-color: #3b3b3b;
+  background-clip: padding-box;
+  border-radius: 9999px;
+}
+
+html ::-webkit-scrollbar-track {
+  background-color: #ccc;
+}
