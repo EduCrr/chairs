@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ProductContext } from "../../contexts/productContext.js";
 import { CatelogArea } from "./style.js";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Row, Col, Container } from "react-bootstrap";
+
 export default function Catalog() {
+  const { products } = useContext(ProductContext);
   const settings = {
     dots: true,
     infinite: true,
