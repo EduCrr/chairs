@@ -23,19 +23,31 @@ export const ProductAreaSingle = styled.div`
     justify-content: space-between;
     align-items: center;
   }
-  .btn {
+  span {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #ccc;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .btns {
     display: flex;
     justify-content: flex-end;
     .icon {
+      padding: 10px;
+      height: 70px;
+      width: 170px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: #ff5c47;
       color: white;
-      padding: 25px 70px;
       border: 0;
       outline: 0;
       cursor: pointer;
     }
+  }
+  h3 {
+    font-weight: 700;
   }
 `;

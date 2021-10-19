@@ -6,15 +6,22 @@
 }
 
 body {
-  background-color: #f2f2f2 !important;
+  background-color: #fdfdfd !important;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 700;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: 700 !important;
+  color: #3b3b3b;
 }
-
+p {
+  line-height: 27px;
+}
 a {
   text-decoration: none !important;
   margin: 0px 10px;

@@ -27,17 +27,21 @@ export default function Product() {
 
             <div className="priceInfo">
               <div className="price">
-                <h1>R$299</h1>
+                <h1>R$ 299</h1>
                 <h5>Category: Decor</h5>
               </div>
-              <div className="btn">
+              <div className="btns">
                 <div className="icon">
-                  Buy <LocalMallIcon />
+                  <div> Buy </div>
+                  <div>
+                    <LocalMallIcon />
+                  </div>
                 </div>
               </div>
             </div>
           </Col>
         </Row>
+        <h3 className="text-center mt-5">Recommended products</h3>
       </Container>
     </ProductAreaSingle>
   );

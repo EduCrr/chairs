@@ -18,7 +18,7 @@ export const CatelogArea = styled.div`
     justify-content: space-around !important;
     align-items: center !important;
     &:nth-child(2) {
-      border-left: 20px solid #f2f2f2;
+      border-left: 20px solid #fdfdfd;
     }
   }
 

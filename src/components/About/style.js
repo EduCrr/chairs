@@ -25,7 +25,6 @@ export const ContentText = styled.div`
   p {
     display: inline-block;
     margin-top: 10px;
-    line-height: 27px;
     margin-bottom: 35px;
   }
   a {
