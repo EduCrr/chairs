@@ -17,7 +17,6 @@ export const ProductArea = styled.div`
   }
 `;
 export const ProductsContent = styled.div`
-  padding-right: 10px;
   overflow: scroll;
   overflow-x: hidden;
   outline: none;
@@ -54,10 +53,12 @@ export const ProductsContent = styled.div`
       width: 100%;
       height: 270px;
       object-fit: cover;
+      cursor: pointer;
     }
   }
   h4 {
     margin-top: 20px;
+    cursor: pointer;
     font-size: 19px;
   }
 `;

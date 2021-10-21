@@ -1,26 +1,58 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { ProductContext } from "../../contexts/productContext";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { ProductArea, ProductsContent } from "./style";
+import { Link } from "react-router-dom";
 import TiltImage from "../../components/TiltImage";
+
 export default function Products() {
+  const { myProducts, loadProducts, storageCart, cart, showSpinner } =
+    useContext(ProductContext);
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  function handleCart(data) {
+    const index = cart.findIndex((item) => item.id === data.id);
+    if (index >= 0) {
+      cart[index].amount += 1;
+      storageCart(cart);
+    } else {
+      cart.push({
+        ...data,
+        amount: 1,
+      });
+      storageCart(cart);
+    }
+  }
   return (
     <ProductArea>
       <Container>
         <h1>Categories</h1>
         <TiltImage borda={true} />
-        <h2>Products</h2>
+        <h2>All Products</h2>
         <ProductsContent>
           <Row>
-            <Col md={3} className=" mb-5">
-              <div className="product">
-                <img
-                  alt=""
-                  src="https://hipvan-images-production.imgix.net/product-images/3789c380-092d-49a4-bb68-cc61ac98c3ec/Modern-Classics-I--DSW-Chair--White-9.png"
-                />
-                <button>R$ 299</button>
-              </div>
-              <h4>teste produto</h4>
-            </Col>
+            <span className={showSpinner ? "" : "hidden"}>
+              <Spinner animation="border" size="sm" />
+            </span>
+            {myProducts.map((item) => (
+              <Col md={3} className=" mb-5" key={item.id}>
+                <div className="product">
+                  <Link to={`product/${item.id}`}>
+                    <img alt="" src={item.image} />
+                  </Link>
+                  <button onClick={() => handleCart(item)}>
+                    R$ {item.price}
+                  </button>
+                </div>
+
+                <Link to={`product/${item.id}`}>
+                  <h4>{item.title}</h4>
+                </Link>
+              </Col>
+            ))}
           </Row>
         </ProductsContent>
       </Container>

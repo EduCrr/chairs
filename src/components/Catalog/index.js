@@ -1,16 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ProductContext } from "../../contexts/productContext.js";
 import { CatelogArea } from "./style.js";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Catalog() {
-  const { products } = useContext(ProductContext);
+  const { myProducts, loadProducts, storageCart, cart } =
+    useContext(ProductContext);
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     vertical: true,
     verticalSwiping: true,
@@ -29,81 +31,48 @@ export default function Catalog() {
       },
     ],
   };
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  function handleCart(data) {
+    const index = cart.findIndex((item) => item.id === data.id);
+    if (index >= 0) {
+      cart[index].amount += 1;
+      storageCart(cart);
+    } else {
+      cart.push({
+        ...data,
+        amount: 1,
+      });
+      storageCart(cart);
+    }
+  }
   return (
     <CatelogArea>
       <h1>Catalog</h1>
 
       <Slider {...settings}>
-        <div className="slideContent">
-          <div className="slideContentImage">
-            <img src="https://hipvan-images-production.imgix.net/product-images/3789c380-092d-49a4-bb68-cc61ac98c3ec/Modern-Classics-I--DSW-Chair--White-9.png" />
-          </div>
-          <div className="slideContentInfo">
-            <span>Chairs</span>
-            <h4>Modern Chair</h4>
-            <p>Lorem ipsum dolor sit amet....</p>
-            <div className="productInfo">
-              <span>R$ 299</span>
-              <button>Buy</button>
+        {myProducts.map((item) => (
+          <div className="slideContent" key={item.id}>
+            <div className="slideContentImage">
+              <Link className="catalogLink" to={`product/${item.id}`}>
+                <img src={item.image} alt={item.title} />
+              </Link>
+            </div>
+            <div className="slideContentInfo">
+              <span>{item.category}</span>
+              <Link className="catalogLink" to={`product/${item.id}`}>
+                <h4>{item.title}</h4>
+              </Link>
+              <p>{item.description}</p>
+              <div className="productInfo">
+                <span>R$ {item.price}</span>
+                <button onClick={() => handleCart(item)}>Buy</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="slideContent">
-          <div className="slideContentImage">
-            <img src="https://hipvan-images-production.imgix.net/product-images/3789c380-092d-49a4-bb68-cc61ac98c3ec/Modern-Classics-I--DSW-Chair--White-9.png" />
-          </div>
-          <div className="slideContentInfo">
-            <span>Chairs</span>
-            <h4>Modern Chair</h4>
-            <p>Lorem ipsum dolor sit amet....</p>
-            <div className="productInfo">
-              <span>R$ 299</span>
-              <button>Buy</button>
-            </div>
-          </div>
-        </div>
-        <div className="slideContent">
-          <div className="slideContentImage">
-            <img src="https://hipvan-images-production.imgix.net/product-images/3789c380-092d-49a4-bb68-cc61ac98c3ec/Modern-Classics-I--DSW-Chair--White-9.png" />
-          </div>
-          <div className="slideContentInfo">
-            <span>Chairs</span>
-            <h4>Modern Chair</h4>
-            <p>Lorem ipsum dolor sit amet....</p>
-            <div className="productInfo">
-              <span>R$ 299</span>
-              <button>Buy</button>
-            </div>
-          </div>
-        </div>
-        <div className="slideContent">
-          <div className="slideContentImage">
-            <img src="https://hipvan-images-production.imgix.net/product-images/3789c380-092d-49a4-bb68-cc61ac98c3ec/Modern-Classics-I--DSW-Chair--White-9.png" />
-          </div>
-          <div className="slideContentInfo">
-            <span>Chairs</span>
-            <h4>Modern Chair</h4>
-            <p>Lorem ipsum dolor sit amet....</p>
-            <div className="productInfo">
-              <span>R$ 299</span>
-              <button>Buy</button>
-            </div>
-          </div>
-        </div>
-        <div className="slideContent">
-          <div className="slideContentImage">
-            <img src="https://hipvan-images-production.imgix.net/product-images/3789c380-092d-49a4-bb68-cc61ac98c3ec/Modern-Classics-I--DSW-Chair--White-9.png" />
-          </div>
-          <div className="slideContentInfo">
-            <span>Chairs</span>
-            <h4>Modern Chair</h4>
-            <p>Lorem ipsum dolor sit amet....</p>
-            <div className="productInfo">
-              <span>R$ 299</span>
-              <button>Buy</button>
-            </div>
-          </div>
-        </div>
+        ))}
       </Slider>
     </CatelogArea>
   );

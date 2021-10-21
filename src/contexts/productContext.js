@@ -1,11 +1,14 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import firebase from "../firebaseConnection";
 export const ProductContext = createContext({});
 
 function ProductProvider({ children }) {
-  const [products, setProducts] = useState([]);
+  const [myProducts, setMyProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [showSpinner, setShowSpinner] = useState(false);
 
   async function loadProducts() {
+    setShowSpinner(true);
     await firebase
       .firestore()
       .collection("products")
@@ -15,23 +18,47 @@ function ProductProvider({ children }) {
         snapshot.forEach((item) => {
           lista.push({
             id: item.id,
-            title: item.title,
-            category: item.category,
-            images: item.image,
-            description: item.description,
-            price: item.price,
+            title: item.data().title,
+            category: item.data().category,
+            image: item.data().image,
+            description: item.data().description,
+            price: item.data().price,
           });
         });
-        setProducts(lista);
+        setMyProducts(lista);
+        setShowSpinner(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  loadProducts();
+
+  function storageCart(item) {
+    localStorage.setItem("cart", JSON.stringify(item));
+  }
+  function loadStorage() {
+    let dadosStorage = localStorage.getItem("cart");
+    if (dadosStorage) {
+      setCart(JSON.parse(dadosStorage));
+    }
+  }
+
+  useEffect(() => {
+    loadStorage();
+  }, []);
 
   return (
-    <ProductContext.Provider value={{ products }}>
+    <ProductContext.Provider
+      value={{
+        myProducts,
+        loadProducts,
+        storageCart,
+        cart,
+        setCart,
+        loadStorage,
+        showSpinner,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );

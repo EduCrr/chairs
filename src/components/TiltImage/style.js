@@ -5,6 +5,10 @@ export const TilArea = styled.div`
   overflow: hidden;
   display: flex;
 
+  a {
+    margin: 0;
+  }
+
   .homeImages {
     display: flex;
     flex-direction: column;

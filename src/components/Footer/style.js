@@ -15,6 +15,9 @@ export const FooterArea = styled.div`
     font-weight: 700;
     margin-bottom: 10px;
   }
+  a {
+    margin: 0px 10px;
+  }
   .icons svg {
     color: #3b3b3b;
     margin: 0px 5px;

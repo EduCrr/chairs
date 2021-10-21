@@ -8,6 +8,9 @@ export const Container = styled.div`
 `;
 export const LeftSide = styled.div`
   margin-left: 25px;
+  a {
+    margin: 0px 10px;
+  }
 `;
 export const RightSide = styled.button.attrs({
   type: "button",

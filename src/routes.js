@@ -3,16 +3,20 @@ import Home from "./Pages/Home";
 import Products from "./Pages/Products";
 import Product from "./Pages/Product";
 import Shop from "./Pages/Shop";
+import Category from "./Pages/Category";
 export default function Routes() {
   return (
     <Switch>
       <Route exact path="/">
         <Home />
       </Route>
+      <Route path="/products/:cat">
+        <Category />
+      </Route>
       <Route exact path="/products">
         <Products />
       </Route>
-      <Route exact path="/product">
+      <Route exact path="/product/:id">
         <Product />
       </Route>
       <Route exact path="/shop">

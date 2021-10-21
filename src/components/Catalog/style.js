@@ -21,7 +21,6 @@ export const CatelogArea = styled.div`
       border-left: 20px solid #fdfdfd;
     }
   }
-
   .slideContentImage img {
     height: 250px;
     width: 250px;
@@ -29,6 +28,7 @@ export const CatelogArea = styled.div`
   }
   .slideContentInfo {
     display: flex;
+    flex: 1;
     flex-direction: column;
     span {
       text-transform: uppercase;
@@ -43,7 +43,7 @@ export const CatelogArea = styled.div`
     }
     .productInfo {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       span {
         color: #3b3b3b;
@@ -51,6 +51,7 @@ export const CatelogArea = styled.div`
         font-size: 22px;
       }
       button {
+        margin: 0px 20px;
         background-color: #3b3b3b;
         border-radius: 40px;
         padding: 15px 30px;
