@@ -5,11 +5,22 @@ import { ProductAreaSingle } from "./style";
 import { useParams } from "react-router-dom";
 import firebase from "../../firebaseConnection";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
+import Slider from "react-slick";
 export default function Product() {
   const { cart, storageCart } = useContext(ProductContext);
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const [images, setImages] = useState([]);
   const [productId, setProductId] = useState({});
+
+  const settings = {
+    dots: true,
+    arrow: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   useEffect(() => {
     async function loadProduct() {
@@ -21,6 +32,7 @@ export default function Product() {
         .then((doc) => {
           setProduct(doc.data());
           setProductId(doc.id);
+          setImages(doc.data().image);
         })
         .catch((error) => {
           console.log(error);
@@ -52,7 +64,13 @@ export default function Product() {
       <Container>
         <Row className="">
           <Col md={4}>
-            <img alt="" src={product.image} />
+            <Slider {...settings}>
+              {images.map((item, k) => (
+                <div key={k}>
+                  <img alt="" src={item} />
+                </div>
+              ))}
+            </Slider>
           </Col>
           <Col md={8} className="info">
             <div className="productInfo">

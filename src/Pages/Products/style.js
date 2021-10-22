@@ -11,6 +11,8 @@ export const ProductArea = styled.div`
     margin: 30px 0px;
     font-weight: 700;
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
   }
   a.link {
     margin: 10px 0px;

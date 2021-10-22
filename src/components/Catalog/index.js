@@ -21,10 +21,11 @@ export default function Catalog() {
     dots: false,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1224,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          slidesPerRow: 1,
           infinite: true,
           dots: true,
         },
@@ -57,7 +58,7 @@ export default function Catalog() {
           <div className="slideContent" key={item.id}>
             <div className="slideContentImage">
               <Link className="catalogLink" to={`product/${item.id}`}>
-                <img src={item.image} alt={item.title} />
+                <img src={item.image[0]} alt={item.title} />
               </Link>
             </div>
             <div className="slideContentInfo">

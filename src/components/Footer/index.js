@@ -9,10 +9,10 @@ export default function Footer() {
     <FooterArea>
       <span>Todos os direitos reservados</span>
       <nav>
-        <Link to="/">Decor</Link>
-        <Link to="/">Furniture</Link>
-        <Link to="/">Lighting</Link>
-        <Link to="/">Kitchen</Link>
+        <Link to="/products/decor">Decor</Link>
+        <Link to="/products/furniture">Furniture</Link>
+        <Link to="/products/lighting">Lighting</Link>
+        <Link to="/products/kitchen">Kitchen</Link>
       </nav>
       <div className="icons">
         <FacebookIcon />

@@ -23,6 +23,7 @@ export const ProductAreaSingle = styled.div`
     justify-content: space-between;
     align-items: center;
   }
+
   span {
     text-transform: uppercase;
     font-size: 14px;

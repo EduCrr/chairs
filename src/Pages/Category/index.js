@@ -60,12 +60,16 @@ export default function Category() {
     history.push(`/products/${cat}`);
     history.push(`/product/${id}`);
   }
+
   return (
     <ProductArea>
       <Container>
         <h1>Categories</h1>
         <TiltImage borda={true} />
-        <h2>{cat}</h2>
+        <h2>
+          {cat}
+          <small>({categoria.length})</small>
+        </h2>
         <ProductsContent>
           <Row>
             <span className={showSpinner ? "" : "hidden"}>
@@ -78,7 +82,7 @@ export default function Category() {
                     <img
                       onClick={() => handleSingle(item.id)}
                       alt=""
-                      src={item.image}
+                      src={item.image[0]}
                     />
 
                     <button onClick={() => handleCart(item)}>

@@ -45,3 +45,11 @@ html ::-webkit-scrollbar-track {
 .hidden {
   display: none;
 }
+
+small {
+  margin: 0 10px;
+  font-size: 14px !important;
+  color: #ccc;
+  font-weight: 700;
+  margin-bottom: 10px;
+}

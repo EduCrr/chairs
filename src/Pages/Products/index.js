@@ -26,12 +26,18 @@ export default function Products() {
       storageCart(cart);
     }
   }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <ProductArea>
       <Container>
         <h1>Categories</h1>
         <TiltImage borda={true} />
-        <h2>All Products</h2>
+        <h2>
+          All Products <small>({myProducts.length})</small>
+        </h2>
         <ProductsContent>
           <Row>
             <span className={showSpinner ? "" : "hidden"}>
@@ -41,7 +47,7 @@ export default function Products() {
               <Col md={3} className=" mb-5" key={item.id}>
                 <div className="product">
                   <Link to={`product/${item.id}`}>
-                    <img alt="" src={item.image} />
+                    <img alt="" src={item.image[0]} />
                   </Link>
                   <button onClick={() => handleCart(item)}>
                     R$ {item.price}

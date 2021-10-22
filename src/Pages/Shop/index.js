@@ -130,7 +130,7 @@ export default function Shop() {
                 {cart.map((item) => (
                   <div className="cartInfo" key={item.id}>
                     <div className="cartImage">
-                      <img alt="" src={item.image} />
+                      <img alt="" src={item.image[0]} />
                     </div>
                     <div className="cartName">
                       <span>{item.category}</span>

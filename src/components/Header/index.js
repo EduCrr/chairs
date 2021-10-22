@@ -9,10 +9,11 @@ export default function Header() {
   return (
     <Container>
       <LeftSide>
-        <Link to="/">Decor</Link>
-        <Link to="/">Furniture</Link>
-        <Link to="/">Lighting</Link>
-        <Link to="/">Kitchen</Link>
+        <Link to="/">Home</Link>
+        <Link to="/products/decor">Decor</Link>
+        <Link to="/products/furniture">Furniture</Link>
+        <Link to="/products/lighting">Lighting</Link>
+        <Link to="/products/kitchen">Kitchen</Link>
       </LeftSide>
 
       <RightSide onClick={handleShop}>Shop</RightSide>
