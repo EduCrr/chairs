@@ -53,3 +53,8 @@ small {
   font-weight: 700;
   margin-bottom: 10px;
 }
+
+.spinner {
+  z-index: 1;
+  margin: auto;
+}

@@ -3,13 +3,6 @@ import styled from "styled-components";
 export const CatelogArea = styled.div`
   padding-top: 3rem;
 
-  .slider {
-    margin-top: 30px;
-    .slick-prev:before,
-    .slick-next:before {
-      color: #3b3b3b;
-    }
-  }
   .slideContent {
     background-color: white;
     padding: 12px;

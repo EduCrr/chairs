@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { ProductContext } from "../../contexts/productContext.js";
 import { CatelogArea } from "./style.js";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 export default function Catalog() {
   const { myProducts, loadProducts, storageCart, cart } =
     useContext(ProductContext);
+  const history = useHistory();
   const settings = {
     dots: true,
     infinite: true,
@@ -48,6 +49,7 @@ export default function Catalog() {
       });
       storageCart(cart);
     }
+    history.push("/shop");
   }
   return (
     <CatelogArea>

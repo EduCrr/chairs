@@ -57,6 +57,7 @@ function ProductProvider({ children }) {
         setCart,
         loadStorage,
         showSpinner,
+        setShowSpinner,
       }}
     >
       {children}

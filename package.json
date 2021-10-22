@@ -17,6 +17,7 @@
     "react-bootstrap": "^2.0.0-rc.1",
     "react-dom": "^17.0.2",
     "react-parallax-tilt": "^1.5.70",
+    "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",

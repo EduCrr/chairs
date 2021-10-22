@@ -18,7 +18,7 @@ export const RightSide = styled.button.attrs({
   height: 70px;
   background-color: #3b3b3b;
   color: white;
-  padding: 5px 70px;
+  padding: 5px 50px;
   border: 0;
   outline: 0;
   cursor: pointer;

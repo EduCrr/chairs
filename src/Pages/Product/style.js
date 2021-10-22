@@ -2,7 +2,30 @@ import styled from "styled-components";
 
 export const ProductAreaSingle = styled.div`
   padding-top: 3rem;
-
+  .carousel-root {
+    display: flex;
+  }
+  .carousel {
+    width: 150px;
+  }
+  .carousel .thumbs {
+    transform: none !important;
+  }
+  .carousel .thumbs-wrapper {
+    margin: 0 !important;
+  }
+  .carousel .thumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+  }
   img {
     width: 100%;
     height: 80vh;
@@ -50,5 +73,8 @@ export const ProductAreaSingle = styled.div`
   }
   h3 {
     font-weight: 700;
+  }
+  .slick-slide {
+    padding: 0px 10px;
   }
 `;

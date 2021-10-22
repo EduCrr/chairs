@@ -3,7 +3,7 @@ import { ProductContext } from "../../contexts/productContext";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { ProductArea, ProductsContent } from "./style";
 import firebase from "../../firebaseConnection";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import TiltImage from "../../components/TiltImage";
 
 export default function Category() {
@@ -55,10 +55,7 @@ export default function Category() {
       });
       storageCart(cart);
     }
-  }
-  function handleSingle(id) {
-    history.push(`/products/${cat}`);
-    history.push(`/product/${id}`);
+    history.push("/shop");
   }
 
   return (
@@ -72,27 +69,25 @@ export default function Category() {
         </h2>
         <ProductsContent>
           <Row>
-            <span className={showSpinner ? "" : "hidden"}>
-              <Spinner animation="border" size="sm" />
-            </span>
-            {categoria.length > 0 &&
+            {showSpinner ? (
+              <Spinner className="spinner" animation="border" size="xl" />
+            ) : (
               categoria.map((item) => (
                 <Col md={3} className=" mb-5" key={item.id}>
                   <div className="product">
-                    <img
-                      onClick={() => handleSingle(item.id)}
-                      alt=""
-                      src={item.image[0]}
-                    />
-
+                    <Link to={`/product/${item.id}`}>
+                      <img alt={item.title} src={item.image[0]} />
+                    </Link>
                     <button onClick={() => handleCart(item)}>
                       R$ {item.price}
                     </button>
                   </div>
-
-                  <h4 onClick={() => handleSingle(item.id)}>{item.title}</h4>
+                  <Link to={`/product/${item.id}`}>
+                    <h4>{item.title}</h4>
+                  </Link>
                 </Col>
-              ))}
+              ))
+            )}
             {!categoria.length && <p>Nenhum produto encontrado!!</p>}
           </Row>
         </ProductsContent>
