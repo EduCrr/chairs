@@ -13,17 +13,17 @@ export default function Catalog() {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     vertical: true,
     verticalSwiping: true,
     className: "slider",
     slidesPerRow: 2,
-    dots: false,
     responsive: [
       {
         breakpoint: 1224,
         settings: {
+          arrows: false,
           slidesToShow: 1,
           slidesToScroll: 1,
           slidesPerRow: 1,
@@ -70,7 +70,7 @@ export default function Catalog() {
               </Link>
               <p>{item.description}</p>
               <div className="productInfo">
-                <span>R$ {item.price}</span>
+                <span>R$ {item.price.replace(".", ",")}</span>
                 <button onClick={() => handleCart(item)}>Buy</button>
               </div>
             </div>

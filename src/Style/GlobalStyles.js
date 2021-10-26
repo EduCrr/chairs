@@ -20,8 +20,11 @@ export default createGlobalStyle`
       width: 100%;
       height: 270px;
       object-fit: cover;
+
+      
     }
   }
+
   h4 {
     margin-top: 20px;
     font-size: 19px;
@@ -35,4 +38,5 @@ export default createGlobalStyle`
     .slick-next:before {
       color: #3b3b3b;
     }
+  
 `;

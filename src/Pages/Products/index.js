@@ -47,13 +47,13 @@ export default function Products() {
                 <Spinner className="spinner" animation="border" size="xl" />
               ) : (
                 myProducts.map((item) => (
-                  <Col md={3} className=" mb-5" key={item.id}>
+                  <Col xl={3} className=" mb-5" key={item.id}>
                     <div className="product">
                       <Link to={`product/${item.id}`}>
                         <img alt={item.title} src={item.image[0]} />
                       </Link>
                       <button onClick={() => handleCart(item)}>
-                        R$ {item.price}
+                        R$ {item.price.replace(".", ",")}
                       </button>
                     </div>
 

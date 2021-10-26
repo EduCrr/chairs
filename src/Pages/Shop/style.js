@@ -6,12 +6,14 @@ export const ShopArea = styled.div`
 export const ShopDetails = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
   .btn {
     cursor: default;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    @media (max-width: 425px) {
+      justify-content: center;
+    }
     button {
       cursor: pointer;
       height: 70px;
@@ -53,6 +55,17 @@ export const ShopDetails = styled.div`
       justify-content: space-between;
       align-items: center;
       padding: 10px 0;
+      @media (max-width: 768px) {
+        flex-direction: column;
+        img {
+          margin: 20px 0px;
+        }
+        .cartName,
+        .cartPrice {
+          text-align: center;
+          padding: 10px 0px;
+        }
+      }
 
       .cartImage {
         img {

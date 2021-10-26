@@ -4,7 +4,9 @@ export const ContaineArea = styled.div``;
 export const TilArea = styled.div`
   overflow: hidden;
   display: flex;
-
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
   a {
     margin: 0;
   }

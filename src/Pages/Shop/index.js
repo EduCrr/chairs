@@ -5,12 +5,13 @@ import { ShopArea, ShopDetails } from "./style";
 import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import { display } from "@material-ui/system";
 
 export default function Shop() {
   const { cart, setCart, storageCart, loadStorage } =
     useContext(ProductContext);
   const [total, setTotal] = useState(0);
+  const [cost, setCost] = useState([]);
+  const [formValidado, setFormValidado] = useState(false);
 
   function price() {
     let result = cart.reduce(
@@ -23,6 +24,10 @@ export default function Shop() {
   useEffect(() => {
     price();
   }, [cart]);
+
+  useEffect(() => {
+    setCost((oldArray) => [...oldArray, cart]);
+  }, []);
 
   function handleRemove(index) {
     let findId = cart.filter((item) => item !== index);
@@ -54,6 +59,24 @@ export default function Shop() {
     }
   }
 
+  function handleRegister(e) {
+    e.preventDefault();
+    setFormValidado(true);
+    if (e.currentTarget.checkValidity() === true) {
+      storageCheckout(cost);
+      setCart([]);
+      storageCart([]);
+      loadStorage();
+      setTotal(0);
+    } else {
+      console.log("erro ao fazer checkout");
+    }
+  }
+
+  function storageCheckout(item) {
+    localStorage.setItem("checkout", JSON.stringify(item));
+  }
+
   return (
     <ShopArea>
       {cart.length <= 0 ? (
@@ -73,14 +96,19 @@ export default function Shop() {
           <h1>Shopping Cart</h1>
           <ShopDetails>
             <Row>
-              <Col md={4} className="details">
+              <Col xl={4} className="details">
                 <div>
                   <span>Total Cost </span>
-                  <h2>{"R$ " + total}</h2>
+                  <h2>{"R$ " + total.toFixed(2).replace(".", ",")}</h2>
                 </div>
                 <div>
                   <h3>Payment Details</h3>
-                  <Form id="checkout">
+                  <Form
+                    onSubmit={handleRegister}
+                    id="checkout"
+                    noValidate
+                    validated={formValidado}
+                  >
                     <Form.Floating className="mb-3 mt-3">
                       <Form.Control
                         id="floatingInputCustom"
@@ -100,7 +128,7 @@ export default function Shop() {
                       <label htmlFor="floatingNameCustom">Card Name</label>
                     </Form.Floating>
                     <Row>
-                      <Col md={6} className="mb-3 mt-3">
+                      <Col xl={6} className="mb-3 mt-3">
                         <Form.Floating>
                           <Form.Control
                             id="floatingExpCustom"
@@ -111,7 +139,7 @@ export default function Shop() {
                           <label htmlFor="floatingExpCustom">Expiration</label>
                         </Form.Floating>
                       </Col>
-                      <Col md={6} className="mb-3 mt-3">
+                      <Col xl={6} className="mb-3 mt-3">
                         <Form.Floating>
                           <Form.Control
                             id="floatingCvvCustom"
@@ -126,7 +154,7 @@ export default function Shop() {
                   </Form>
                 </div>
               </Col>
-              <Col md={{ span: 7, offset: 1 }} className="cartArea">
+              <Col xl={{ span: 7, offset: 1 }} className="cartArea">
                 {cart.map((item) => (
                   <div className="cartInfo" key={item.id}>
                     <div className="cartImage">
@@ -148,7 +176,8 @@ export default function Shop() {
                       />
                     </div>
                     <div className="cartPrice">
-                      R$ {item.price * item.amount}
+                      R${" "}
+                      {(item.price * item.amount).toFixed(2).replace(".", ",")}
                     </div>
                     <div className="cartDelete">
                       <CloseIcon

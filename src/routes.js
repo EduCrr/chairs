@@ -4,6 +4,7 @@ import Products from "./Pages/Products";
 import Product from "./Pages/Product";
 import Shop from "./Pages/Shop";
 import Category from "./Pages/Category";
+import Checkout from "./Pages/Checkout";
 export default function Routes() {
   return (
     <Switch>
@@ -21,6 +22,9 @@ export default function Routes() {
       </Route>
       <Route exact path="/shop">
         <Shop />
+      </Route>
+      <Route exact path="/checkout">
+        <Checkout />
       </Route>
     </Switch>
   );

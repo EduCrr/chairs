@@ -8,6 +8,14 @@ export const ContentArea = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    img {
+      height: fit-content !important;
+      width: 100%;
+    }
+  }
 `;
 
 export const ContentImage = styled.div`
@@ -35,5 +43,8 @@ export const ContentText = styled.div`
     padding: 15px 30px;
     border: 0;
     outline: 0;
+  }
+  @media (max-width: 1024px) {
+    padding: 20px;
   }
 `;

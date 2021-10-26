@@ -20,6 +20,7 @@ export default function Product() {
   const [productId, setProductId] = useState({});
   const [productsRec, setProductsRec] = useState([]);
   const history = useHistory();
+
   const settings = {
     dots: false,
     infinite: true,
@@ -35,6 +36,16 @@ export default function Product() {
           slidesToScroll: 1,
           slidesPerRow: 1,
           infinite: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          slidesPerRow: 1,
+          infinite: true,
+          arrows: false,
         },
       },
     ],
@@ -110,6 +121,11 @@ export default function Product() {
     loadProductsRec();
   }, []);
 
+  function handleRoute(id) {
+    history.push("");
+
+    setTimeout(() => history.push(`/product/${id}`), 100);
+  }
   return (
     <ProductAreaSingle>
       <Container>
@@ -118,7 +134,7 @@ export default function Product() {
         ) : (
           <>
             <Row>
-              <Col md={5}>
+              <Col xl={5}>
                 <Carousel
                   showArrows={true}
                   infiniteLoop={true}
@@ -132,7 +148,7 @@ export default function Product() {
                   ))}
                 </Carousel>
               </Col>
-              <Col md={7} className="info">
+              <Col xl={7} className="info">
                 <div className="productInfo">
                   <span>{product.category}</span>
                   <h1>{product.title}</h1>
@@ -163,13 +179,23 @@ export default function Product() {
                 {productsRec.map((item) => (
                   <div className=" mb-5" key={item.id}>
                     <div className="product">
-                      <a href={item.id}>
-                        <img alt={item.title} src={item.image[0]} />
-                      </a>
+                      <img
+                        style={{ cursor: "pointer" }}
+                        onClick={() => handleRoute(item.id)}
+                        alt={item.title}
+                        src={item.image[0]}
+                      />
+                      <button onClick={() => handleCart(item.id, item)}>
+                        R$ {item.price}
+                      </button>
                     </div>
-                    <a className="text-center" href={item.id}>
-                      <h4>{item.title}</h4>
-                    </a>
+
+                    <h4
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleRoute(item.id)}
+                    >
+                      {item.title}
+                    </h4>
                   </div>
                 ))}
               </Slider>

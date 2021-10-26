@@ -36,4 +36,20 @@ export const ProductsContent = styled.div`
   &::-webkit-scrollbar-track {
     background-color: #ccc;
   }
+
+  @media (max-width: 1024px) {
+    .product {
+      width: 270px;
+      margin: auto;
+    }
+    h4 {
+      text-align: center !important;
+      margin-top: 40px !important;
+    }
+  }
+  @media (max-width: 425px) {
+    .product {
+      width: 220px;
+    }
+  }
 `;

@@ -13,6 +13,10 @@ export const CatelogArea = styled.div`
     &:nth-child(2) {
       border-left: 20px solid #fdfdfd;
     }
+    @media (max-width: 730px) {
+      flex-direction: column;
+      text-align: center;
+    }
   }
   .slideContentImage img {
     height: 250px;
@@ -23,6 +27,7 @@ export const CatelogArea = styled.div`
     display: flex;
     flex: 1;
     flex-direction: column;
+    margin: 0px 15px;
     span {
       text-transform: uppercase;
       font-size: 14px;
@@ -32,6 +37,10 @@ export const CatelogArea = styled.div`
     }
     p {
       color: #ccc;
+      max-width: 25ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       font-size: 14px;
     }
     .productInfo {
@@ -51,6 +60,18 @@ export const CatelogArea = styled.div`
         border: 0;
         outline: 0;
         color: white;
+      }
+    }
+    @media (max-width: 1024px) {
+      justify-content: space-between;
+      .productInfo {
+        justify-content: space-between;
+      }
+    }
+    @media (max-width: 730px) {
+      flex-direction: column;
+      .productInfo {
+        flex-direction: column;
       }
     }
   }

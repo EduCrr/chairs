@@ -23,4 +23,16 @@ export const FooterArea = styled.div`
     margin: 0px 5px;
     cursor: pointer;
   }
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    nav {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin: 10px 0px;
+      a {
+        padding: 5px 0px;
+      }
+    }
+  }
 `;
