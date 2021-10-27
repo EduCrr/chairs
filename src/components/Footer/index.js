@@ -7,7 +7,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 export default function Footer() {
   return (
     <FooterArea>
-      <span>Todos os direitos reservados</span>
+      <span>All rights reserved</span>
       <nav>
         <Link to="/products/decor">Decor</Link>
         <Link to="/products/furniture">Furniture</Link>

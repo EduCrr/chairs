@@ -22,4 +22,17 @@ export const ChechoutDetails = styled.div`
     font-weight: 700;
     margin-bottom: 10px;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    span {
+      text-align: center !important;
+    }
+    img,
+    h3 {
+      margin: 10px 0px;
+    }
+  }
 `;

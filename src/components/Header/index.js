@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Container, LeftSide, RightSide, Menu } from "./style";
+import { ProductContext } from "../../contexts/productContext";
+
 import MenuIcon from "@material-ui/icons/Menu";
 export default function Header() {
+  const { cart, loadStorage } = useContext(ProductContext);
   const history = useHistory();
   function handleShop() {
     history.push("/shop");
   }
   const [showMenu, setShowMenu] = useState(false);
-
   function handleMenu() {
     setShowMenu(!showMenu);
   }
+
+  useEffect(() => {}, [cart]);
+
   return (
     <Container>
       <LeftSide>
@@ -42,7 +47,12 @@ export default function Header() {
         </Menu>
       </LeftSide>
 
-      <RightSide onClick={handleShop}>Shop</RightSide>
+      <RightSide onClick={handleShop}>
+        Shop{" "}
+        <span className="badge badge-light">
+          {cart.length > 0 ? cart.length : ""}
+        </span>
+      </RightSide>
     </Container>
   );
 }

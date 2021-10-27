@@ -57,4 +57,5 @@ small {
 .spinner {
   z-index: 1;
   margin: auto;
+  text-align: center;
 }

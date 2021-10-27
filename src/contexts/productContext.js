@@ -6,6 +6,8 @@ function ProductProvider({ children }) {
   const [myProducts, setMyProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [showSpinner, setShowSpinner] = useState(false);
+  const [cost, setCost] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
 
   async function loadProducts() {
     setShowSpinner(true);
@@ -58,6 +60,8 @@ function ProductProvider({ children }) {
         loadStorage,
         showSpinner,
         setShowSpinner,
+        cost,
+        setCost,
       }}
     >
       {children}

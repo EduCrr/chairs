@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../contexts/productContext";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import { ShopArea, ShopDetails } from "./style";
 import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 
 export default function Shop() {
+  const history = useHistory();
   const { cart, setCart, storageCart, loadStorage } =
     useContext(ProductContext);
   const [total, setTotal] = useState(0);
-  const [cost, setCost] = useState([]);
   const [formValidado, setFormValidado] = useState(false);
 
   function price() {
@@ -20,14 +21,9 @@ export default function Shop() {
     );
     setTotal(result);
   }
-
   useEffect(() => {
     price();
   }, [cart]);
-
-  useEffect(() => {
-    setCost((oldArray) => [...oldArray, cart]);
-  }, []);
 
   function handleRemove(index) {
     let findId = cart.filter((item) => item !== index);
@@ -63,7 +59,8 @@ export default function Shop() {
     e.preventDefault();
     setFormValidado(true);
     if (e.currentTarget.checkValidity() === true) {
-      storageCheckout(cost);
+      storageCheckout(cart);
+      history.push("/checkout");
       setCart([]);
       storageCart([]);
       loadStorage();
@@ -89,7 +86,7 @@ export default function Shop() {
           }}
           className="text-center mt-4"
         >
-          Não há produtos no seu carrinho 🥺
+          There are no products in your shopping cart 🥺
         </p>
       ) : (
         <Container>
