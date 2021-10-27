@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { ProductContext } from "../../contexts/productContext";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { ProductArea, ProductsContent } from "./style";
+import { ToastContainer, toast, Flip } from "react-toastify";
 import { Link, useHistory } from "react-router-dom";
 import TiltImage from "../../components/TiltImage";
 
@@ -26,6 +27,17 @@ export default function Products() {
       });
       storageCart(cart);
     }
+    toast.success("Added product!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      transition: Flip,
+      theme: "dark",
+    });
     history.push("/shop");
   }
   useEffect(() => {
@@ -64,6 +76,17 @@ export default function Products() {
                 ))
               )}
             </>
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
           </Row>
         </ProductsContent>
       </Container>

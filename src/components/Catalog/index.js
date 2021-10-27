@@ -3,7 +3,7 @@ import { ProductContext } from "../../contexts/productContext.js";
 import { CatelogArea } from "./style.js";
 import { Link, useHistory } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
-
+import { ToastContainer, toast, Flip } from "react-toastify";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -51,6 +51,17 @@ export default function Catalog() {
       });
       storageCart(cart);
     }
+    toast.success("Added product!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      transition: Flip,
+      theme: "dark",
+    });
     history.push("/shop");
   }
   return (
@@ -80,6 +91,17 @@ export default function Catalog() {
               </div>
             </div>
           ))}
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Slider>
       )}
     </CatelogArea>

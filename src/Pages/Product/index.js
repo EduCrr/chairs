@@ -9,6 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useHistory } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "slick-carousel/slick/slick.css";
+import { ToastContainer, toast, Flip } from "react-toastify";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 export default function Product() {
@@ -89,6 +90,17 @@ export default function Product() {
       });
       storageCart(cart);
     }
+    toast.success("Added product!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      transition: Flip,
+      theme: "dark",
+    });
     history.push("/shop");
   }
   async function loadProductsRec() {
@@ -200,6 +212,17 @@ export default function Product() {
                 ))}
               </Slider>
             </Row>
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
           </>
         )}
       </Container>

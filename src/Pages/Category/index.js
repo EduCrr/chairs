@@ -5,6 +5,7 @@ import { ProductArea, ProductsContent } from "./style";
 import firebase from "../../firebaseConnection";
 import { useParams, Link, useHistory } from "react-router-dom";
 import TiltImage from "../../components/TiltImage";
+import { ToastContainer, toast, Flip } from "react-toastify";
 
 export default function Category() {
   const { storageCart, cart } = useContext(ProductContext);
@@ -55,6 +56,17 @@ export default function Category() {
       });
       storageCart(cart);
     }
+    toast.success("Added product!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      transition: Flip,
+      theme: "dark",
+    });
     history.push("/shop");
   }
 
@@ -89,6 +101,17 @@ export default function Category() {
               ))
             )}
             {!categoria.length && <p>Nenhum produto encontrado!!</p>}
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
           </Row>
         </ProductsContent>
       </Container>

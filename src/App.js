@@ -5,6 +5,8 @@ import Routes from "./routes";
 import Footer from "./components/Footer";
 import ProductProvider from "./contexts/productContext";
 import GlobalStyles from "./Style/GlobalStyles";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function App() {
   return (
     <ProductProvider>
@@ -12,6 +14,7 @@ export default function App() {
         <GlobalStyles />
         <Header />
         <Routes />
+        <ToastContainer />
         <Footer />
       </BrowserRouter>
     </ProductProvider>

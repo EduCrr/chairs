@@ -6,6 +6,7 @@ import { ShopArea, ShopDetails } from "./style";
 import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
+import { ToastContainer, toast, Flip } from "react-toastify";
 
 export default function Shop() {
   const history = useHistory();
@@ -65,6 +66,17 @@ export default function Shop() {
       storageCart([]);
       loadStorage();
       setTotal(0);
+      toast.success("Checkout success", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        transition: Flip,
+        theme: "dark",
+      });
     } else {
       console.log("erro ao fazer checkout");
     }
@@ -190,6 +202,17 @@ export default function Shop() {
                   Checkout
                 </Button>
               </div>
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
             </Row>
           </ShopDetails>
         </Container>
