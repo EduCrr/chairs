@@ -1,5 +1,5 @@
 <p align="center">
-http://eduhouse.epizy.com/
+http://educhair.epizy.com/
 </p>
 
 <div align="center">
