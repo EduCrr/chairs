@@ -1,5 +1,7 @@
 <p align="center">
 http://educhair.epizy.com/
+
+Um site da web para adicionar produtos para o seu carrinho de compras. Visualize informações de cada produto, e uma área para ver os items no carrinho. Todos os dados vindo do Firebase.
 </p>
 
 <div align="center">
